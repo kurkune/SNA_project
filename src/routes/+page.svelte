@@ -1,4 +1,6 @@
 <script>
+	import image from '$lib/components/Smiling_face_with_heart-eyes.svg'
+
 	let text_e = ''
 	let text_d = ''
 	let encoded_text = ''
@@ -131,11 +133,7 @@
 				</div>
 			</div>
 			<div class="relative ml-16 mt-16 h-80 lg:mt-8">
-				<!-- <img
-					class="w-[25rem] max-w-none"
-					src="/Smiling_face_with_heart-eyes.svg"
-					alt="emoji"
-				/> -->
+				<img class="w-[25rem] max-w-none" src={image} alt="emoji" />
 			</div>
 		</div>
 	</div>
