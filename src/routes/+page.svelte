@@ -131,11 +131,11 @@
 				</div>
 			</div>
 			<div class="relative ml-16 mt-16 h-80 lg:mt-8">
-				<img
+				<!-- <img
 					class="w-[25rem] max-w-none"
-					src="src/lib/components/Smiling face with heart-eyes.svg"
+					src="/Smiling_face_with_heart-eyes.svg"
 					alt="emoji"
-				/>
+				/> -->
 			</div>
 		</div>
 	</div>
