@@ -1,8 +1,10 @@
 <script>
 	let text_e = ''
 	let text_d = ''
+	let encoded_text = ''
+	let decoded_text = ''
 
-	async function handleSubmit() {
+	async function handleEncode() {
 		const request = await fetch('https://SNAproject.pythonanywhere.com/encode', {
 			method: 'POST',
 			headers: {
@@ -18,10 +20,11 @@
 		}
 
 		const data = await request.json()
-		console.log(data)
+		encoded_text = data.encoded_text
+		console.log(encoded_text)
 	}
 
-	async function handle() {
+	async function handleDecode() {
 		const request = await fetch('https://SNAproject.pythonanywhere.com/decode', {
 			method: 'POST',
 			headers: {
@@ -37,7 +40,12 @@
 		}
 
 		const data = await request.json()
-		console.log(data)
+		decoded_text = data.decoded_text
+		console.log(decoded_text)
+	}
+
+	const copyToClipboard = () => {
+    	navigator.clipboard.writeText(encoded_text);
 	}
 </script>
 
@@ -134,28 +142,38 @@
 </div>
 
 <div id="start" class="lg:pt-16 text-center">
-	<h1 class="text-4xl font-bold">Encode and Decode your text into emojis</h1>
+	<h1 class="text-4xl font-bold">Type your text and obtain Hash</h1>
 </div>
 <div class="lg:py-8 text-center">
-	<form on:submit|preventDefault={handleSubmit}>
+	<form on:submit|preventDefault={handleEncode}>
 		<input
 			bind:value={text_e}
 			type="text"
-			placeholder="Type here"
+			placeholder="Enter your text here"
 			class="input input-bordered input-accent w-full max-w-xs"
 		/>
 		<button type="submit" class="btn btn-accent mt-4">Submit</button>
 	</form>
+	{#if encoded_text}
+        <p>Your hash is: {encoded_text}</p>
+		<button on:click={copyToClipboard} class="btn btn-accent mt-4">Copy</button>
+    {/if}
 </div>
 
+<div id="start" class="lg:pt-4 text-center">
+	<h1 class="text-4xl font-bold">Enter your Hash to obtain decoded message</h1>
+</div>
 <div class="lg:py-8 text-center">
-	<form on:submit|preventDefault={handle}>
+	<form on:submit|preventDefault={handleDecode}>
 		<input
 			bind:value={text_d}
 			type="text"
-			placeholder="Type here"
+			placeholder="Hash"
 			class="input input-bordered input-accent w-full max-w-xs"
 		/>
 		<button type="submit" class="btn btn-accent mt-4">Submit</button>
 	</form>
+	{#if decoded_text}
+        <p>Your decoded text is: {decoded_text}</p>
+    {/if}
 </div>
