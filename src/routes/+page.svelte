@@ -45,7 +45,7 @@
 	}
 
 	const copyToClipboard = () => {
-    	navigator.clipboard.writeText(encoded_text);
+		navigator.clipboard.writeText(encoded_text)
 	}
 </script>
 
@@ -155,9 +155,9 @@
 		<button type="submit" class="btn btn-accent mt-4">Submit</button>
 	</form>
 	{#if encoded_text}
-        <p>Your hash is: {encoded_text}</p>
+		<p>Your hash is: {encoded_text}</p>
 		<button on:click={copyToClipboard} class="btn btn-accent mt-4">Copy</button>
-    {/if}
+	{/if}
 </div>
 
 <div id="start" class="lg:pt-4 text-center">
@@ -174,6 +174,6 @@
 		<button type="submit" class="btn btn-accent mt-4">Submit</button>
 	</form>
 	{#if decoded_text}
-        <p>Your decoded text is: {decoded_text}</p>
-    {/if}
+		<p>Your decoded text is: {decoded_text}</p>
+	{/if}
 </div>
